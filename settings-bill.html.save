@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/input" method="post">
+        <input type="text" name="callCost" placeholder="enter sms cost">
+        <input type="text" name="smsCost" placeholder="enter call cost">
+        <input type="text" name="warnLevel" placeholder="enter warning lev>
+        <input type="text" name="critLevelCost" placeholder="enter critical le>
+        <input type="submit">
+    </form>
+  </body>
+</html>
