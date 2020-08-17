@@ -26,9 +26,9 @@ module.exports = function SettingsBill() {
     function recordAction(action) {
 
         let cost = 0;
-        if (action === 'sms') {
+        if (action === 'sms' && !hasReachedCriticalLevel()) {
             cost = smsCost;
-        } else if (action === 'call') {
+        } else if (action === 'call' && !hasReachedCriticalLevel()) {
             cost = callCost;
         }
 
