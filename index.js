@@ -44,7 +44,7 @@ app.post('/action', function(req, res){
 
 app.get('/actions', function(req, res){
       var actionsList = settingsBill.actions()
-         for (let key = 0; key < actionsList.length; key++){
+         for (key in actionsList){
          key.ago = moment(key.timestamp).fromNow()
 }
 
@@ -58,7 +58,7 @@ app.get('/actions/:actionType', function(req, res){
      const actionType = req.params.actionType;
     
      var actionsList = settingsBill.actions()
-         for (let key = 0; key < actionsList.length; key++){
+         for (key in actionsList){
          key.ago = moment(key.timestamp).fromNow()
 }
 
