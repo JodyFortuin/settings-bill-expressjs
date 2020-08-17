@@ -96,14 +96,19 @@ module.exports = function SettingsBill() {
         return total >= criticalLevel;
     }
 
-    function alertColor(){
-       if (hasReachedCriticalLevel()) {
-           return "critical";
+       function alertColor(){
+       const total = grandTotal();
+
+       if (total >= warningLevel && total < criticalLevel) {
+           console.log('alertWarning')
+           return 'warning';
            }
-       if (hasReachedWarningLevel()) {
-           return "warning";
+       if (total >= criticalLevel) {
+           console.log('alertCritical')
+           return 'danger';
     }
 }
+
 
     return {
         setSettings,
