@@ -32,7 +32,7 @@ module.exports = function SettingsBill() {
             cost = callCost;
         }
 
-        actionList.push({
+        if (cost > 0)actionList.push({
             type: action,
             cost,
             timestamp: new Date()
