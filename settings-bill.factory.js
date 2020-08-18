@@ -1,10 +1,12 @@
 module.exports = function SettingsBill() {
+var moment = require('moment');
+moment().fromNow(); 
 
     let smsCost;
     let callCost;
     let warningLevel;
     let criticalLevel;
-
+ 
     let actionList = [];
 
     function setSettings(settings) {
@@ -26,6 +28,7 @@ module.exports = function SettingsBill() {
     function recordAction(action) {
 
         let cost = 0;
+        let timeAgo = moment(new Date()).fromNow();
         if (action === 'sms' && !hasReachedCriticalLevel()) {
             cost = smsCost;
         } else if (action === 'call' && !hasReachedCriticalLevel()) {
@@ -35,7 +38,7 @@ module.exports = function SettingsBill() {
         if (cost > 0)actionList.push({
             type: action,
             cost,
-            timestamp: new Date()
+            timestamp: timeAgo
         });
     }
 
@@ -96,7 +99,7 @@ module.exports = function SettingsBill() {
         return total >= criticalLevel;
     }
 
-       function alertColor(){
+    function alertColor(){
        const total = grandTotal();
 
        if (total >= warningLevel && total < criticalLevel) {
@@ -108,7 +111,6 @@ module.exports = function SettingsBill() {
            return 'danger';
     }
 }
-
 
     return {
         setSettings,
