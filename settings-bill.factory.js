@@ -1,6 +1,6 @@
 module.exports = function SettingsBill() {
-var moment = require('moment');
-moment().fromNow(); 
+//var moment = require('moment');
+//moment().fromNow(); 
 
     let smsCost;
     let callCost;
@@ -28,7 +28,7 @@ moment().fromNow();
     function recordAction(action) {
 
         let cost = 0;
-        let timeAgo = moment(new Date()).fromNow();
+       // let timeAgo = moment(new Date()).fromNow();
         if (action === 'sms' && !hasReachedCriticalLevel()) {
             cost = smsCost;
         } else if (action === 'call' && !hasReachedCriticalLevel()) {
@@ -38,7 +38,7 @@ moment().fromNow();
         if (cost > 0)actionList.push({
             type: action,
             cost,
-            timestamp: timeAgo
+            timestamp: new Date()
         });
     }
 
