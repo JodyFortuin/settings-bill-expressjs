@@ -3,7 +3,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const SettingsBill = require('./settings-bill.factory');
 const moment = require('moment');
-moment().fromNow(); 
+moment().format(); 
 
 
 let app = express();
@@ -45,14 +45,12 @@ app.post('/action', function(req, res){
 
 app.get('/actions', function(req, res){
       var actionsList = settingsBill.actions()
-      
-  //       for (time in actionsList){
-    //     time.ago = moment(time.timestamp).fromNow()
-//}
+        
+         for (let time of actionsList){
+         time.ago = moment(time.timestamp).fromNow()
+}
 
-      res.render('actions', {actions: settingsBill.actions(),
-  //    timestamp: moment().fromNow(),
-      actions: actionsList
+      res.render('actions', {actions: actionsList
     });
 });
 
@@ -60,9 +58,9 @@ app.get('/actions/:actionType', function(req, res){
      const actionType = req.params.actionType;
      var actionsList = settingsBill.actions()
 
-      //   for (time in actionsList){
-        // time.ago = moment(time.timestamp).fromNow()
-//}
+         for (let time of actionsList){
+         time.ago = moment(time.timestamp).fromNow()
+}
 
      res.render('actions', {actions: settingsBill.actionsFor(actionType),
      actions: actionsList
